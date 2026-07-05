@@ -82,7 +82,7 @@ TOTAL_ROWS = int(re.search(r"Total after de-dup:\s*([\d,]+)", meta)
                  .group(1).replace(",", ""))
 
 for col in ("created_date", "closed_date"):
-    sample[col] = pd.to_datetime(sample[col])
+    sample[col] = pd.to_datetime(sample[col], format="ISO8601")
 
 N = len(sample)
 LAST = N + 1  # last data row in Cleaned_Data
@@ -614,10 +614,12 @@ for ct in top_complaints:
         r += 1
 last = r - 1
 for i in range(first, last + 1):
-    c = ws.cell(row=i, column=10, value=f'=PERCENTRANK.INC($C${first}:$C${last},$C{i})')
+    # PERCENTRANK.INC is a post-2007 function: openpyxl must store it with the
+    # _xlfn. prefix or Excel shows #NAME? (Excel renders it without the prefix)
+    c = ws.cell(row=i, column=10, value=f'=_xlfn.PERCENTRANK.INC($C${first}:$C${last},$C{i})')
     c.font = F_FORMULA
     c.number_format = "0%"
-    c = ws.cell(row=i, column=11, value=f'=PERCENTRANK.INC($D${first}:$D${last},$D{i})')
+    c = ws.cell(row=i, column=11, value=f'=_xlfn.PERCENTRANK.INC($D${first}:$D${last},$D{i})')
     c.font = F_FORMULA
     c.number_format = "0%"
     c = ws.cell(row=i, column=12,
