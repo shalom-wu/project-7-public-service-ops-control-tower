@@ -1,0 +1,21 @@
+# Raw pulls are large (~250MB) and reproducible via scripts/pull_data.py
+data/raw/*.csv
+
+# Office lock/temp files
+~$*.xlsx
+*.tmp
+
+# Python support-script cruft
+__pycache__/
+*.py[cod]
+
+# DuckDB scratch databases (SQL layer builds these locally)
+*.duckdb
+*.duckdb.wal
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Regenerate with scripts/run_sql.py (Parquet version is committed instead)
+data/powerbi/fact_service_requests.csv

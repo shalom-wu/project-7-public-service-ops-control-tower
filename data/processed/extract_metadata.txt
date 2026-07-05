@@ -1,0 +1,6 @@
+Extract pulled: 2026-07-05
+Dataset: NYC Open Data erm2-nwe9 (311 Service Requests 2010-Present)
+Activity window: created 2026-04-01 .. 2026-06-30 -> 968,993 rows
+Aged open backlog: created 2025-01-01 .. 2026-03-31, not Closed -> 101,825 rows
+Total after de-dup: 1,070,818 rows
+Excel sample: 100,000 rows, seed 42 (scaling factor 10.7082)

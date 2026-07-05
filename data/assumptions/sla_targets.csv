@@ -1,0 +1,32 @@
+complaint_type,sla_days,rationale
+Noise - Residential,1,Quality-of-life response expected same/next day
+Noise - Street/Sidewalk,1,Quality-of-life response expected same/next day
+Noise - Commercial,1,Quality-of-life response expected same/next day
+Noise - Vehicle,1,Quality-of-life response expected same/next day
+Noise,3,General noise reports allow brief triage window
+Illegal Parking,1,Time-sensitive; violation is transient
+Blocked Driveway,1,Time-sensitive; resident access blocked
+Abandoned Vehicle,7,Requires verification then tow scheduling
+Derelict Vehicles,7,Requires verification then tow scheduling
+Traffic Signal Condition,2,Safety-critical infrastructure
+Street Light Condition,10,Safety-relevant; crew dispatch cycle
+Missed Collection,3,Next scheduled collection cycle
+Dirty Condition,7,Cleaning crew dispatch cycle
+Rodent,14,Inspection scheduling window
+UNSANITARY CONDITION,30,Housing inspection process
+HEAT/HOT WATER,14,Habitability issue; inspection plus follow-up
+PLUMBING,30,Housing inspection process
+PAINT/PLASTER,30,Housing inspection process
+DOOR/WINDOW,30,Housing inspection process
+ELECTRIC,30,Housing inspection process
+GENERAL,30,Housing inspection process
+Water System,7,Utility issue; leak/quality response
+Sewer,7,Utility issue; overflow risk
+Street Condition,30,Roadway repair scheduling
+Sidewalk Condition,90,Long-cycle capital-adjacent repairs
+Graffiti,60,Non-urgent remediation program
+Food Establishment,14,Health inspection scheduling
+Consumer Complaint,30,Case-review process
+Taxi Complaint,30,Case-review process
+For Hire Vehicle Complaint,30,Case-review process
+DEFAULT,14,Fallback for all unlisted request types
