@@ -1,0 +1,8 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../public_service_ops_control_tower.SemanticModel"
+    }
+  }
+}

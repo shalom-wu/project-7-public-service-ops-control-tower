@@ -1,0 +1,740 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "kind": "m",
+        "expression": [
+          "\"C:\\Users\\shalo\\OneDrive\\Desktop\\project-7-public-service-ops-control-tower\\data\\powerbi\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "fact_service_requests",
+        "columns": [
+          {
+            "name": "unique_key",
+            "dataType": "string",
+            "sourceColumn": "unique_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "created_date",
+            "dataType": "dateTime",
+            "sourceColumn": "created_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "closed_date",
+            "dataType": "dateTime",
+            "sourceColumn": "closed_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "agency",
+            "dataType": "string",
+            "sourceColumn": "agency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "agency_name",
+            "dataType": "string",
+            "sourceColumn": "agency_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "complaint_type",
+            "dataType": "string",
+            "sourceColumn": "complaint_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "descriptor",
+            "dataType": "string",
+            "sourceColumn": "descriptor",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "location_type",
+            "dataType": "string",
+            "sourceColumn": "location_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "incident_zip",
+            "dataType": "string",
+            "sourceColumn": "incident_zip",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "borough",
+            "dataType": "string",
+            "sourceColumn": "borough",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "status",
+            "dataType": "string",
+            "sourceColumn": "status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "open_data_channel_type",
+            "dataType": "string",
+            "sourceColumn": "open_data_channel_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "slice",
+            "dataType": "string",
+            "sourceColumn": "slice",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "is_closed",
+            "dataType": "boolean",
+            "sourceColumn": "is_closed",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "closure_days",
+            "dataType": "double",
+            "sourceColumn": "closure_days",
+            "formatString": "0.0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "age_days",
+            "dataType": "double",
+            "sourceColumn": "age_days",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sla_days",
+            "dataType": "int64",
+            "sourceColumn": "sla_days",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sla_status",
+            "dataType": "string",
+            "sourceColumn": "sla_status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "aging_bucket",
+            "dataType": "string",
+            "sourceColumn": "aging_bucket",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "created_week",
+            "dataType": "dateTime",
+            "sourceColumn": "created_week",
+            "formatString": "yyyy-mm-dd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "created_month",
+            "dataType": "dateTime",
+            "sourceColumn": "created_month",
+            "formatString": "mmm yyyy",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "created_date_only",
+            "dataType": "dateTime",
+            "sourceColumn": "created_date_only",
+            "formatString": "yyyy-mm-dd",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_service_requests",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Parquet.Document(File.Contents(DataFolder & \"\\fact_service_requests.parquet\")),",
+                "    WithDateOnly = Table.AddColumn(Source, \"created_date_only\", each Date.From([created_date]), type date)",
+                "in",
+                "    WithDateOnly"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Requests",
+            "expression": "COUNTROWS ( fact_service_requests )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Closed Requests",
+            "expression": "CALCULATE ( [Total Requests], fact_service_requests[is_closed] = TRUE () )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Open Requests",
+            "expression": "CALCULATE ( [Total Requests], fact_service_requests[is_closed] = FALSE () )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Closure Rate",
+            "expression": "DIVIDE ( [Closed Requests], [Total Requests] )",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Backlog Count",
+            "expression": "[Open Requests]",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Average Closure Days",
+            "expression": "AVERAGE ( fact_service_requests[closure_days] )",
+            "formatString": "0.0"
+          },
+          {
+            "name": "Median Closure Days",
+            "expression": "MEDIAN ( fact_service_requests[closure_days] )",
+            "formatString": "0.0"
+          },
+          {
+            "name": "SLA Missed",
+            "expression": "CALCULATE ( [Total Requests], fact_service_requests[sla_status] IN { \"Missed\", \"Open Past SLA\" } )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "SLA Outcomes Known",
+            "expression": "CALCULATE ( [Total Requests], fact_service_requests[sla_status] <> \"Open Within SLA\" )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "SLA Miss Rate",
+            "expression": "DIVIDE ( [SLA Missed], [SLA Outcomes Known] )",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Aging Backlog Count",
+            "expression": "CALCULATE ( [Open Requests], fact_service_requests[aging_bucket] IN { \"31-90 days\", \"91-180 days\", \"180+ days\" } )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Aged Share of Backlog",
+            "expression": "DIVIDE ( [Aging Backlog Count], [Open Requests] )",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Share of Total Requests",
+            "expression": "DIVIDE ( [Total Requests], CALCULATE ( [Total Requests], ALLSELECTED ( fact_service_requests ) ) )",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Requests Previous Month",
+            "expression": "CALCULATE ( [Total Requests], PREVIOUSMONTH ( dim_date[date] ) )",
+            "formatString": "#,0"
+          },
+          {
+            "name": "MoM Request Change %",
+            "expression": "DIVIDE ( [Total Requests] - [Requests Previous Month], [Requests Previous Month] )",
+            "formatString": "0.0%"
+          }
+        ]
+      },
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "formatString": "yyyy-mm-dd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "week_start",
+            "dataType": "dateTime",
+            "sourceColumn": "week_start",
+            "formatString": "yyyy-mm-dd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_start",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start",
+            "formatString": "mmm yyyy",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "weekday",
+            "dataType": "string",
+            "sourceColumn": "weekday",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\dim_date.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"date\", type date}, {\"week_start\", type date}, {\"month_start\", type date}, {\"weekday\", type text}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_sla_targets",
+        "columns": [
+          {
+            "name": "complaint_type",
+            "dataType": "string",
+            "sourceColumn": "complaint_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sla_days",
+            "dataType": "int64",
+            "sourceColumn": "sla_days",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "rationale",
+            "dataType": "string",
+            "sourceColumn": "rationale",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_sla_targets",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\dim_sla_targets.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"complaint_type\", type text}, {\"sla_days\", Int64.Type}, {\"rationale\", type text}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "priority_scores",
+        "columns": [
+          {
+            "name": "complaint_type",
+            "dataType": "string",
+            "sourceColumn": "complaint_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "borough",
+            "dataType": "string",
+            "sourceColumn": "borough",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "agency",
+            "dataType": "string",
+            "sourceColumn": "agency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "total_requests",
+            "dataType": "int64",
+            "sourceColumn": "total_requests",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "open_requests",
+            "dataType": "int64",
+            "sourceColumn": "open_requests",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sla_miss_rate",
+            "dataType": "double",
+            "sourceColumn": "sla_miss_rate",
+            "formatString": "0.0%",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "aged_share_of_open",
+            "dataType": "double",
+            "sourceColumn": "aged_share_of_open",
+            "formatString": "0.0%",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "volume_percentile",
+            "dataType": "double",
+            "sourceColumn": "volume_percentile",
+            "formatString": "0.0%",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "backlog_percentile",
+            "dataType": "double",
+            "sourceColumn": "backlog_percentile",
+            "formatString": "0.0%",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "priority_score",
+            "dataType": "double",
+            "sourceColumn": "priority_score",
+            "formatString": "0.000",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "priority_rank",
+            "dataType": "int64",
+            "sourceColumn": "priority_rank",
+            "formatString": "0",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "priority_scores",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\priority_scores.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"complaint_type\", type text}, {\"borough\", type text}, {\"agency\", type text}, {\"total_requests\", Int64.Type}, {\"open_requests\", Int64.Type}, {\"sla_miss_rate\", type number}, {\"aged_share_of_open\", type number}, {\"volume_percentile\", type number}, {\"backlog_percentile\", type number}, {\"priority_score\", type number}, {\"priority_rank\", Int64.Type}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Priority Score (Static)",
+            "expression": "MAX ( priority_scores[priority_score] )",
+            "formatString": "0.000"
+          },
+          {
+            "name": "Dynamic Priority Score",
+            "expression": "VAR w_vol  = [W Volume Value]\nVAR w_back = [W Backlog Value]\nVAR w_miss = [W Miss Value]\nVAR w_aged = [W Aged Value]\nVAR wsum   = w_vol + w_back + w_miss + w_aged\nRETURN\n    DIVIDE (\n          w_vol  * AVERAGE ( priority_scores[volume_percentile] )\n        + w_back * AVERAGE ( priority_scores[backlog_percentile] )\n        + w_miss * AVERAGE ( priority_scores[sla_miss_rate] )\n        + w_aged * AVERAGE ( priority_scores[aged_share_of_open] ),\n        wsum\n    )",
+            "formatString": "0.000"
+          },
+          {
+            "name": "Dynamic Priority Rank",
+            "expression": "RANKX ( ALLSELECTED ( priority_scores ), [Dynamic Priority Score], , DESC, DENSE )",
+            "formatString": "0"
+          }
+        ]
+      },
+      {
+        "name": "kpi_weekly",
+        "columns": [
+          {
+            "name": "created_week",
+            "dataType": "dateTime",
+            "sourceColumn": "created_week",
+            "formatString": "yyyy-mm-dd",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "requests_created",
+            "dataType": "int64",
+            "sourceColumn": "requests_created",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "eventually_closed",
+            "dataType": "int64",
+            "sourceColumn": "eventually_closed",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "still_open",
+            "dataType": "int64",
+            "sourceColumn": "still_open",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "avg_closure_days",
+            "dataType": "double",
+            "sourceColumn": "avg_closure_days",
+            "formatString": "0.0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "sla_miss_rate",
+            "dataType": "double",
+            "sourceColumn": "sla_miss_rate",
+            "formatString": "0.0%",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "kpi_weekly",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\kpi_weekly.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"created_week\", type date}, {\"requests_created\", Int64.Type}, {\"eventually_closed\", Int64.Type}, {\"still_open\", Int64.Type}, {\"avg_closure_days\", type number}, {\"sla_miss_rate\", type number}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "backlog_aging",
+        "columns": [
+          {
+            "name": "aging_bucket",
+            "dataType": "string",
+            "sourceColumn": "aging_bucket",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "borough",
+            "dataType": "string",
+            "sourceColumn": "borough",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "open_requests",
+            "dataType": "int64",
+            "sourceColumn": "open_requests",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "avg_age_days",
+            "dataType": "double",
+            "sourceColumn": "avg_age_days",
+            "formatString": "#,0",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "backlog_aging",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"\\backlog_aging.csv\"),[Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"aging_bucket\", type text}, {\"borough\", type text}, {\"open_requests\", Int64.Type}, {\"avg_age_days\", type number}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "W Volume",
+        "columns": [
+          {
+            "name": "W Volume",
+            "dataType": "double",
+            "sourceColumn": "[W Volume]",
+            "type": "calculatedTableColumn",
+            "summarizeBy": "none",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": "{\"version\": 3, \"kind\": 2}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "W Volume",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "SELECTCOLUMNS ( GENERATESERIES ( 0, 1, 0.05 ), \"W Volume\", [Value] )"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "W Volume Value",
+            "expression": "SELECTEDVALUE ( 'W Volume'[W Volume], 0.3 )",
+            "formatString": "0.00"
+          }
+        ]
+      },
+      {
+        "name": "W Backlog",
+        "columns": [
+          {
+            "name": "W Backlog",
+            "dataType": "double",
+            "sourceColumn": "[W Backlog]",
+            "type": "calculatedTableColumn",
+            "summarizeBy": "none",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": "{\"version\": 3, \"kind\": 2}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "W Backlog",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "SELECTCOLUMNS ( GENERATESERIES ( 0, 1, 0.05 ), \"W Backlog\", [Value] )"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "W Backlog Value",
+            "expression": "SELECTEDVALUE ( 'W Backlog'[W Backlog], 0.25 )",
+            "formatString": "0.00"
+          }
+        ]
+      },
+      {
+        "name": "W Miss",
+        "columns": [
+          {
+            "name": "W Miss",
+            "dataType": "double",
+            "sourceColumn": "[W Miss]",
+            "type": "calculatedTableColumn",
+            "summarizeBy": "none",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": "{\"version\": 3, \"kind\": 2}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "W Miss",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "SELECTCOLUMNS ( GENERATESERIES ( 0, 1, 0.05 ), \"W Miss\", [Value] )"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "W Miss Value",
+            "expression": "SELECTEDVALUE ( 'W Miss'[W Miss], 0.25 )",
+            "formatString": "0.00"
+          }
+        ]
+      },
+      {
+        "name": "W Aged",
+        "columns": [
+          {
+            "name": "W Aged",
+            "dataType": "double",
+            "sourceColumn": "[W Aged]",
+            "type": "calculatedTableColumn",
+            "summarizeBy": "none",
+            "extendedProperties": [
+              {
+                "name": "ParameterMetadata",
+                "type": "json",
+                "value": "{\"version\": 3, \"kind\": 2}"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "W Aged",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": "SELECTCOLUMNS ( GENERATESERIES ( 0, 1, 0.05 ), \"W Aged\", [Value] )"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "W Aged Value",
+            "expression": "SELECTEDVALUE ( 'W Aged'[W Aged], 0.2 )",
+            "formatString": "0.00"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "fact_to_date",
+        "fromTable": "fact_service_requests",
+        "fromColumn": "created_date_only",
+        "toTable": "dim_date",
+        "toColumn": "date"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DataFolder\", \"fact_service_requests\", \"dim_date\", \"dim_sla_targets\", \"priority_scores\", \"kpi_weekly\", \"backlog_aging\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}

@@ -19,3 +19,7 @@ Thumbs.db
 
 # Regenerate with scripts/run_sql.py (Parquet version is committed instead)
 data/powerbi/fact_service_requests.csv
+
+# Power BI local artifacts
+*.pbix.bak
+**/.pbi/

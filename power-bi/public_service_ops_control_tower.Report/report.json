@@ -1,0 +1,362 @@
+{
+  "config": "{\"version\": \"5.43\", \"themeCollection\": {}}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "name": "page1",
+      "displayName": "Executive Operations Overview",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "width": 1280,
+          "height": 68,
+          "config": "{\"name\": \"vc0001\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 0, \"z\": 0, \"width\": 1280, \"height\": 68}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Public Service Operations \\u2014 SLA Control Tower\", \"textStyle\": {\"fontSize\": \"20pt\", \"fontWeight\": \"bold\", \"color\": \"#26343F\"}}]}, {\"textRuns\": [{\"value\": \"Executive Operations Overview \\u00b7 NYC 311 \\u00b7 Q2 2026 activity + aged open backlog\", \"textStyle\": {\"fontSize\": \"10pt\", \"color\": \"#41505B\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 0,
+          "y": 696,
+          "z": 0,
+          "width": 1280,
+          "height": 24,
+          "config": "{\"name\": \"vc0002\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 696, \"z\": 0, \"width\": 1280, \"height\": 24}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Source: NYC Open Data \\u2014 311 Service Requests (erm2-nwe9) \\u00b7 snapshot 2026-07-05 \\u00b7 SLA targets are analyst assumptions\", \"textStyle\": {\"fontSize\": \"8pt\", \"color\": \"#8896A0\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 84,
+          "z": 10,
+          "width": 158,
+          "height": 92,
+          "config": "{\"name\": \"vc0003\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 84, \"z\": 10, \"width\": 158, \"height\": 92}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 184,
+          "y": 84,
+          "z": 11,
+          "width": 158,
+          "height": 92,
+          "config": "{\"name\": \"vc0004\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 184, \"y\": 84, \"z\": 11, \"width\": 158, \"height\": 92}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.Open Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Open Requests\"}, \"Name\": \"fact_service_requests.Open Requests\", \"NativeReferenceName\": \"Open Requests\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 352,
+          "y": 84,
+          "z": 12,
+          "width": 158,
+          "height": 92,
+          "config": "{\"name\": \"vc0005\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 352, \"y\": 84, \"z\": 12, \"width\": 158, \"height\": 92}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.Closed Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Closed Requests\"}, \"Name\": \"fact_service_requests.Closed Requests\", \"NativeReferenceName\": \"Closed Requests\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 520,
+          "y": 84,
+          "z": 13,
+          "width": 158,
+          "height": 92,
+          "config": "{\"name\": \"vc0006\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 520, \"y\": 84, \"z\": 13, \"width\": 158, \"height\": 92}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.Backlog Count\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Backlog Count\"}, \"Name\": \"fact_service_requests.Backlog Count\", \"NativeReferenceName\": \"Backlog Count\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 688,
+          "y": 84,
+          "z": 14,
+          "width": 158,
+          "height": 92,
+          "config": "{\"name\": \"vc0007\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 688, \"y\": 84, \"z\": 14, \"width\": 158, \"height\": 92}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.SLA Miss Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"SLA Miss Rate\"}, \"Name\": \"fact_service_requests.SLA Miss Rate\", \"NativeReferenceName\": \"SLA Miss Rate\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 856,
+          "y": 84,
+          "z": 15,
+          "width": 158,
+          "height": 92,
+          "config": "{\"name\": \"vc0008\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 856, \"y\": 84, \"z\": 15, \"width\": 158, \"height\": 92}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.Average Closure Days\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Average Closure Days\"}, \"Name\": \"fact_service_requests.Average Closure Days\", \"NativeReferenceName\": \"Average Closure Days\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 192,
+          "z": 30,
+          "width": 640,
+          "height": 260,
+          "config": "{\"name\": \"vc0009\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 192, \"z\": 30, \"width\": 640, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.week_start\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}, {\"queryRef\": \"fact_service_requests.Closed Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"week_start\"}, \"Name\": \"dim_date.week_start\", \"NativeReferenceName\": \"week_start\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Closed Requests\"}, \"Name\": \"fact_service_requests.Closed Requests\", \"NativeReferenceName\": \"Closed Requests\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 672,
+          "y": 192,
+          "z": 31,
+          "width": 400,
+          "height": 260,
+          "config": "{\"name\": \"vc0010\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 672, \"y\": 192, \"z\": 31, \"width\": 400, \"height\": 260}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"priority_scores.complaint_type\", \"active\": true}], \"Y\": [{\"queryRef\": \"priority_scores.Priority Score (Static)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"priority_scores\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"priority_scores.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Priority Score (Static)\"}, \"Name\": \"priority_scores.Priority Score (Static)\", \"NativeReferenceName\": \"Priority Score (Static)\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Priority Score (Static)\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 1088,
+          "y": 192,
+          "z": 32,
+          "width": 176,
+          "height": 120,
+          "config": "{\"name\": \"vc0011\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1088, \"y\": 192, \"z\": 32, \"width\": 176, \"height\": 120}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.borough\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"borough\"}, \"Name\": \"fact_service_requests.borough\", \"NativeReferenceName\": \"borough\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 1088,
+          "y": 322,
+          "z": 33,
+          "width": 176,
+          "height": 130,
+          "config": "{\"name\": \"vc0012\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1088, \"y\": 322, \"z\": 33, \"width\": 176, \"height\": 130}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.agency\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"agency\"}, \"Name\": \"fact_service_requests.agency\", \"NativeReferenceName\": \"agency\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 468,
+          "z": 40,
+          "width": 1248,
+          "height": 216,
+          "config": "{\"name\": \"vc0013\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 468, \"z\": 40, \"width\": 1248, \"height\": 216}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Headline insight\", \"textStyle\": {\"fontSize\": \"12pt\", \"fontWeight\": \"bold\", \"color\": \"#26343F\"}}]}, {\"textRuns\": [{\"value\": \"Q2 demand ran ~75K requests/week and rose through the quarter (Queens +11.0% then +6.5% MoM). Enforcement-type requests close in hours, but a structural backlog of ~168K open requests has built up \\u2014 77% already older than 30 days, 36% older than 180 days \\u2014 concentrated in parks/tree work (DPR), TLC complaint cases and housing conditions (HPD). All ~19K helicopter-noise requests are unclosed (reporting artifact): report that line separately so it doesn't distort citywide KPIs.\", \"textStyle\": {\"fontSize\": \"11pt\", \"color\": \"#41505B\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        }
+      ],
+      "ordinal": 0
+    },
+    {
+      "name": "page2",
+      "displayName": "Demand & Complaint Patterns",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "width": 1280,
+          "height": 68,
+          "config": "{\"name\": \"vc0014\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 0, \"z\": 0, \"width\": 1280, \"height\": 68}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Demand & Complaint Patterns\", \"textStyle\": {\"fontSize\": \"20pt\", \"fontWeight\": \"bold\", \"color\": \"#26343F\"}}]}, {\"textRuns\": [{\"value\": \"Where service demand concentrates: time, request type, agency, borough\", \"textStyle\": {\"fontSize\": \"10pt\", \"color\": \"#41505B\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 0,
+          "y": 696,
+          "z": 0,
+          "width": 1280,
+          "height": 24,
+          "config": "{\"name\": \"vc0015\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 696, \"z\": 0, \"width\": 1280, \"height\": 24}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Source: NYC Open Data \\u2014 311 Service Requests (erm2-nwe9) \\u00b7 snapshot 2026-07-05 \\u00b7 SLA targets are analyst assumptions\", \"textStyle\": {\"fontSize\": \"8pt\", \"color\": \"#8896A0\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 84,
+          "z": 10,
+          "width": 620,
+          "height": 250,
+          "config": "{\"name\": \"vc0016\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 84, \"z\": 10, \"width\": 620, \"height\": 250}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.date\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"t1\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"date\"}, \"Name\": \"dim_date.date\", \"NativeReferenceName\": \"date\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t1\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 652,
+          "y": 84,
+          "z": 11,
+          "width": 612,
+          "height": 400,
+          "config": "{\"name\": \"vc0017\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 652, \"y\": 84, \"z\": 11, \"width\": 612, \"height\": 400}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.complaint_type\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"fact_service_requests.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Total Requests\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 350,
+          "z": 12,
+          "width": 300,
+          "height": 334,
+          "config": "{\"name\": \"vc0018\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 350, \"z\": 12, \"width\": 300, \"height\": 334}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.agency\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"agency\"}, \"Name\": \"fact_service_requests.agency\", \"NativeReferenceName\": \"agency\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Total Requests\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 332,
+          "y": 350,
+          "z": 13,
+          "width": 304,
+          "height": 334,
+          "config": "{\"name\": \"vc0019\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 332, \"y\": 350, \"z\": 13, \"width\": 304, \"height\": 334}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.borough\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"borough\"}, \"Name\": \"fact_service_requests.borough\", \"NativeReferenceName\": \"borough\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Total Requests\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 652,
+          "y": 500,
+          "z": 14,
+          "width": 440,
+          "height": 184,
+          "config": "{\"name\": \"vc0020\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 652, \"y\": 500, \"z\": 14, \"width\": 440, \"height\": 184}}], \"singleVisual\": {\"visualType\": \"stackedAreaChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.week_start\", \"active\": true}], \"Series\": [{\"queryRef\": \"fact_service_requests.borough\"}], \"Y\": [{\"queryRef\": \"fact_service_requests.Total Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"week_start\"}, \"Name\": \"dim_date.week_start\", \"NativeReferenceName\": \"week_start\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"borough\"}, \"Name\": \"fact_service_requests.borough\", \"NativeReferenceName\": \"borough\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"Total Requests\"}, \"Name\": \"fact_service_requests.Total Requests\", \"NativeReferenceName\": \"Total Requests\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 1108,
+          "y": 500,
+          "z": 15,
+          "width": 156,
+          "height": 88,
+          "config": "{\"name\": \"vc0021\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1108, \"y\": 500, \"z\": 15, \"width\": 156, \"height\": 88}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.created_month\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"created_month\"}, \"Name\": \"fact_service_requests.created_month\", \"NativeReferenceName\": \"created_month\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 1108,
+          "y": 596,
+          "z": 16,
+          "width": 156,
+          "height": 88,
+          "config": "{\"name\": \"vc0022\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1108, \"y\": 596, \"z\": 16, \"width\": 156, \"height\": 88}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.open_data_channel_type\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"open_data_channel_type\"}, \"Name\": \"fact_service_requests.open_data_channel_type\", \"NativeReferenceName\": \"open_data_channel_type\"}]}, \"drillFilterOtherVisuals\": true}}"
+        }
+      ],
+      "ordinal": 1
+    },
+    {
+      "name": "page3",
+      "displayName": "SLA & Backlog Diagnostics",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "width": 1280,
+          "height": 68,
+          "config": "{\"name\": \"vc0023\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 0, \"z\": 0, \"width\": 1280, \"height\": 68}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"SLA & Backlog Diagnostics\", \"textStyle\": {\"fontSize\": \"20pt\", \"fontWeight\": \"bold\", \"color\": \"#26343F\"}}]}, {\"textRuns\": [{\"value\": \"Miss rates vs assumed targets \\u00b7 backlog aging \\u00b7 the oldest unresolved work\", \"textStyle\": {\"fontSize\": \"10pt\", \"color\": \"#41505B\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 0,
+          "y": 696,
+          "z": 0,
+          "width": 1280,
+          "height": 24,
+          "config": "{\"name\": \"vc0024\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 696, \"z\": 0, \"width\": 1280, \"height\": 24}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Source: NYC Open Data \\u2014 311 Service Requests (erm2-nwe9) \\u00b7 snapshot 2026-07-05 \\u00b7 SLA targets are analyst assumptions\", \"textStyle\": {\"fontSize\": \"8pt\", \"color\": \"#8896A0\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 84,
+          "z": 10,
+          "width": 400,
+          "height": 300,
+          "config": "{\"name\": \"vc0025\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 84, \"z\": 10, \"width\": 400, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.agency\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.SLA Miss Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"agency\"}, \"Name\": \"fact_service_requests.agency\", \"NativeReferenceName\": \"agency\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"SLA Miss Rate\"}, \"Name\": \"fact_service_requests.SLA Miss Rate\", \"NativeReferenceName\": \"SLA Miss Rate\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"SLA Miss Rate\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 432,
+          "y": 84,
+          "z": 11,
+          "width": 420,
+          "height": 300,
+          "config": "{\"name\": \"vc0026\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 432, \"y\": 84, \"z\": 11, \"width\": 420, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.complaint_type\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.SLA Miss Rate\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"fact_service_requests.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"SLA Miss Rate\"}, \"Name\": \"fact_service_requests.SLA Miss Rate\", \"NativeReferenceName\": \"SLA Miss Rate\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"SLA Miss Rate\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 868,
+          "y": 84,
+          "z": 12,
+          "width": 396,
+          "height": 300,
+          "config": "{\"name\": \"vc0027\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 868, \"y\": 84, \"z\": 12, \"width\": 396, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"clusteredColumnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.aging_bucket\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Open Requests\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"aging_bucket\"}, \"Name\": \"fact_service_requests.aging_bucket\", \"NativeReferenceName\": \"aging_bucket\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Open Requests\"}, \"Name\": \"fact_service_requests.Open Requests\", \"NativeReferenceName\": \"Open Requests\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Open Requests\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 400,
+          "z": 13,
+          "width": 400,
+          "height": 284,
+          "config": "{\"name\": \"vc0028\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 400, \"z\": 13, \"width\": 400, \"height\": 284}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fact_service_requests.complaint_type\", \"active\": true}], \"Y\": [{\"queryRef\": \"fact_service_requests.Median Closure Days\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"fact_service_requests.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Median Closure Days\"}, \"Name\": \"fact_service_requests.Median Closure Days\", \"NativeReferenceName\": \"Median Closure Days\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Median Closure Days\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 432,
+          "y": 400,
+          "z": 14,
+          "width": 660,
+          "height": 284,
+          "config": "{\"name\": \"vc0031\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 432, \"y\": 400, \"z\": 14, \"width\": 660, \"height\": 284}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.unique_key\"}, {\"queryRef\": \"fact_service_requests.complaint_type\"}, {\"queryRef\": \"fact_service_requests.borough\"}, {\"queryRef\": \"fact_service_requests.agency\"}, {\"queryRef\": \"fact_service_requests.status\"}, {\"queryRef\": \"fact_service_requests.age_days\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"unique_key\"}, \"Name\": \"fact_service_requests.unique_key\", \"NativeReferenceName\": \"unique_key\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"fact_service_requests.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"borough\"}, \"Name\": \"fact_service_requests.borough\", \"NativeReferenceName\": \"borough\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"agency\"}, \"Name\": \"fact_service_requests.agency\", \"NativeReferenceName\": \"agency\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"status\"}, \"Name\": \"fact_service_requests.status\", \"NativeReferenceName\": \"status\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"age_days\"}, \"Name\": \"fact_service_requests.age_days\", \"NativeReferenceName\": \"age_days\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"age_days\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 1108,
+          "y": 400,
+          "z": 15,
+          "width": 156,
+          "height": 130,
+          "config": "{\"name\": \"vc0032\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1108, \"y\": 400, \"z\": 15, \"width\": 156, \"height\": 130}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_service_requests.aging_bucket\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"f\", \"Entity\": \"fact_service_requests\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"f\"}}, \"Property\": \"aging_bucket\"}, \"Name\": \"fact_service_requests.aging_bucket\", \"NativeReferenceName\": \"aging_bucket\"}]}, \"drillFilterOtherVisuals\": true}}"
+        }
+      ],
+      "ordinal": 2
+    },
+    {
+      "name": "page4",
+      "displayName": "Priority & Action View",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720,
+      "config": "{}",
+      "visualContainers": [
+        {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "width": 1280,
+          "height": 68,
+          "config": "{\"name\": \"vc0033\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 0, \"z\": 0, \"width\": 1280, \"height\": 68}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Priority & Action View\", \"textStyle\": {\"fontSize\": \"20pt\", \"fontWeight\": \"bold\", \"color\": \"#26343F\"}}]}, {\"textRuns\": [{\"value\": \"Weighted priority score by complaint type \\u00d7 borough \\u2014 what-if sliders re-rank live\", \"textStyle\": {\"fontSize\": \"10pt\", \"color\": \"#41505B\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 0,
+          "y": 696,
+          "z": 0,
+          "width": 1280,
+          "height": 24,
+          "config": "{\"name\": \"vc0034\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 0, \"y\": 696, \"z\": 0, \"width\": 1280, \"height\": 24}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Source: NYC Open Data \\u2014 311 Service Requests (erm2-nwe9) \\u00b7 snapshot 2026-07-05 \\u00b7 SLA targets are analyst assumptions\", \"textStyle\": {\"fontSize\": \"8pt\", \"color\": \"#8896A0\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 84,
+          "z": 10,
+          "width": 560,
+          "height": 420,
+          "config": "{\"name\": \"vc0035\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 84, \"z\": 10, \"width\": 560, \"height\": 420}}], \"singleVisual\": {\"visualType\": \"pivotTable\", \"projections\": {\"Rows\": [{\"queryRef\": \"priority_scores.complaint_type\", \"active\": true}], \"Columns\": [{\"queryRef\": \"priority_scores.borough\"}], \"Values\": [{\"queryRef\": \"priority_scores.Dynamic Priority Score\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"p\", \"Entity\": \"priority_scores\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"priority_scores.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"borough\"}, \"Name\": \"priority_scores.borough\", \"NativeReferenceName\": \"borough\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"p\"}}, \"Property\": \"Dynamic Priority Score\"}, \"Name\": \"priority_scores.Dynamic Priority Score\", \"NativeReferenceName\": \"Dynamic Priority Score\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 592,
+          "y": 84,
+          "z": 11,
+          "width": 672,
+          "height": 300,
+          "config": "{\"name\": \"vc0036\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 592, \"y\": 84, \"z\": 11, \"width\": 672, \"height\": 300}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"priority_scores.complaint_type\"}, {\"queryRef\": \"priority_scores.borough\"}, {\"queryRef\": \"priority_scores.agency\"}, {\"queryRef\": \"priority_scores.Dynamic Priority Score\"}, {\"queryRef\": \"priority_scores.Dynamic Priority Rank\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"t0\", \"Entity\": \"priority_scores\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"complaint_type\"}, \"Name\": \"priority_scores.complaint_type\", \"NativeReferenceName\": \"complaint_type\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"borough\"}, \"Name\": \"priority_scores.borough\", \"NativeReferenceName\": \"borough\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"agency\"}, \"Name\": \"priority_scores.agency\", \"NativeReferenceName\": \"agency\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Dynamic Priority Score\"}, \"Name\": \"priority_scores.Dynamic Priority Score\", \"NativeReferenceName\": \"Dynamic Priority Score\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Dynamic Priority Rank\"}, \"Name\": \"priority_scores.Dynamic Priority Rank\", \"NativeReferenceName\": \"Dynamic Priority Rank\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"t0\"}}, \"Property\": \"Dynamic Priority Rank\"}}}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 592,
+          "y": 400,
+          "z": 20,
+          "width": 160,
+          "height": 90,
+          "config": "{\"name\": \"vc0037\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 592, \"y\": 400, \"z\": 20, \"width\": 160, \"height\": 90}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"W Volume.W Volume\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"W\", \"Entity\": \"W Volume\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"W\"}}, \"Property\": \"W Volume\"}, \"Name\": \"W Volume.W Volume\", \"NativeReferenceName\": \"W Volume\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 762,
+          "y": 400,
+          "z": 21,
+          "width": 160,
+          "height": 90,
+          "config": "{\"name\": \"vc0038\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 762, \"y\": 400, \"z\": 21, \"width\": 160, \"height\": 90}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"W Backlog.W Backlog\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"W\", \"Entity\": \"W Backlog\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"W\"}}, \"Property\": \"W Backlog\"}, \"Name\": \"W Backlog.W Backlog\", \"NativeReferenceName\": \"W Backlog\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 932,
+          "y": 400,
+          "z": 22,
+          "width": 160,
+          "height": 90,
+          "config": "{\"name\": \"vc0039\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 932, \"y\": 400, \"z\": 22, \"width\": 160, \"height\": 90}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"W Miss.W Miss\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"W\", \"Entity\": \"W Miss\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"W\"}}, \"Property\": \"W Miss\"}, \"Name\": \"W Miss.W Miss\", \"NativeReferenceName\": \"W Miss\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 1102,
+          "y": 400,
+          "z": 23,
+          "width": 160,
+          "height": 90,
+          "config": "{\"name\": \"vc0040\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1102, \"y\": 400, \"z\": 23, \"width\": 160, \"height\": 90}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"W Aged.W Aged\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"W\", \"Entity\": \"W Aged\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"W\"}}, \"Property\": \"W Aged\"}, \"Name\": \"W Aged.W Aged\", \"NativeReferenceName\": \"W Aged\"}]}, \"drillFilterOtherVisuals\": true}}"
+        },
+        {
+          "x": 16,
+          "y": 520,
+          "z": 30,
+          "width": 1248,
+          "height": 164,
+          "config": "{\"name\": \"vc0041\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 520, \"z\": 30, \"width\": 1248, \"height\": 164}}], \"singleVisual\": {\"visualType\": \"textbox\", \"objects\": {\"general\": [{\"properties\": {\"paragraphs\": [{\"textRuns\": [{\"value\": \"Recommended next actions\", \"textStyle\": {\"fontSize\": \"12pt\", \"fontWeight\": \"bold\", \"color\": \"#26343F\"}}]}, {\"textRuns\": [{\"value\": \"1. DPR parks/tree aging review \\u2014 close-or-escalate items older than 90 days.   2. TLC case-throughput review; validate the 30-day assumed SLA against case policy.   3. Resolve the helicopter-noise recording artifact with EDC before treating it as the #1 problem.   4. Clear aged HEAT/HOT WATER residue before the October heat season.   5. Track 'Unspecified borough' share monthly (data hygiene).\", \"textStyle\": {\"fontSize\": \"11pt\", \"color\": \"#41505B\"}}]}]}}]}, \"drillFilterOtherVisuals\": true}}"
+        }
+      ],
+      "ordinal": 3
+    }
+  ]
+}

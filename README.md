@@ -33,7 +33,7 @@ never claimed. Full citation, field list and reproduction steps:
 | 6 | NYPD share of Q2 demand — closed in hours (enforcement vs works-type demand is the operational fault line) | **48%**, 0.2-day avg closure |
 | 7 | Helicopter-noise requests unclosed (reporting artifact, flagged not hidden) | **~19K, 100% open** |
 
-![Executive overview mockup](power-bi/screenshots/page1_executive_overview.png)
+![Power BI dashboard — Executive Operations Overview (actual Desktop capture)](power-bi/screenshots/pbix_page1_executive_overview.png)
 
 ## What's in the box
 
@@ -41,7 +41,7 @@ never claimed. Full citation, field list and reproduction steps:
 |---|---|
 | **Excel** | [`excel/public_service_ops_control_tower.xlsx`](excel/public_service_ops_control_tower.xlsx) — 10 tabs: README, raw sample, 100K-row cleaned table with live formula columns, data dictionary, editable assumptions (SLA targets, aging buckets, priority weights), native pivot tables + pivot charts, SLA analysis, backlog analysis, priority model, action list. Zero formula errors; verified by full recalculation in Excel. |
 | **SQL** | [`sql/`](sql) — DuckDB scripts: 9 data-quality checks, KPI views (the reference definitions), 10 analysis queries, priority scoring. [`sql/README.md`](sql/README.md) documents every definition. |
-| **Power BI** | [`power-bi/`](power-bi) — 4-page dashboard package: brief, star-schema model doc, copy-paste DAX measures, page mockups, refresh + exact manual build instructions. **No .pbix is included — Power BI Desktop is not installed in the build environment** (verified); the package rebuilds the dashboard in ~30–45 min and the blocker is flagged everywhere the dashboard is mentioned. |
+| **Power BI** | [`power-bi/public_service_ops_control_tower.pbix`](power-bi/public_service_ops_control_tower.pbix) — the working 4-page dashboard with the full 1.07M-row extract imported: executive KPIs, demand patterns, SLA/backlog diagnostics, and a priority matrix with what-if weight sliders. Authored as code (the PBIP semantic-model + report source is committed alongside), documented in [`power-bi/`](power-bi) with model docs, DAX reference, and real Desktop screenshots. |
 | **Strategy** | [`reports/strategy_brief.md`](reports/strategy_brief.md) — findings, the priority model, a weekly/monthly operating rhythm, escalation criteria, limitations. |
 | **Explainer** | [`explainer-guide/explain-it-to-me.md`](explainer-guide/explain-it-to-me.md) — the whole project for a non-technical reader, plus interview Q&A and a glossary. |
 
@@ -74,7 +74,10 @@ python scripts/build_workbook.py   # workbook structure + formulas
 python scripts/finalize_workbook.py  # pivot tables + recalc (needs desktop Excel on Windows)
 ```
 
-**Building the Power BI dashboard:** follow
+**Opening the Power BI dashboard:** open
+[`power-bi/public_service_ops_control_tower.pbix`](power-bi/public_service_ops_control_tower.pbix)
+in the free Power BI Desktop — data is already imported. To rebuild from
+scratch instead, follow
 [`power-bi/manual_build_instructions.md`](power-bi/manual_build_instructions.md).
 
 ## Limitations (read before trusting the numbers)
@@ -114,9 +117,10 @@ python scripts/finalize_workbook.py  # pivot tables + recalc (needs desktop Exce
 > project on 1.07M real NYC 311 service requests. DuckDB validates the data
 > and defines the KPIs; a 10-tab Excel workbook holds the working model with
 > editable SLA targets and priority weights; a 4-page Power BI dashboard
-> design turns it into an executive view with what-if scenario sliders. Key
-> finding: 77% of the ~168K-request open backlog is already older than 30
-> days, concentrated in parks, taxi-complaint and housing workflows.
+> (.pbix with the full extract imported) turns it into an executive view
+> with what-if scenario weights. Key finding: 77% of the ~168K-request open
+> backlog is already older than 30 days, concentrated in parks,
+> taxi-complaint and housing workflows.
 
 **Interview explanation (30 seconds, spoken)**
 
