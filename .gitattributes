@@ -1,0 +1,14 @@
+# Keep GitHub language stats focused on source code.
+*.ipynb linguist-vendored
+*.pbix linguist-generated
+*.pbit linguist-generated
+*.xlsx linguist-generated
+*.xlsm linguist-generated
+*.pptx linguist-generated
+*.png linguist-generated
+*.jpg linguist-generated
+*.jpeg linguist-generated
+*.gif linguist-generated
+reports/figures/** linguist-generated
+power-bi/screenshots/** linguist-generated
+data/** linguist-vendored
