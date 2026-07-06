@@ -1,31 +1,31 @@
 aging_bucket,borough,open_requests,avg_age_days
 0-7 days,Queens,1754,6.0
+91-180 days,Manhattan,9330,135.0
+8-30 days,Manhattan,6378,17.0
 0-7 days,Staten Island,333,6.0
-91-180 days,Staten Island,810,126.0
-8-30 days,Staten Island,1342,17.0
-91-180 days,Queens,8383,130.0
-8-30 days,Queens,8343,19.0
-0-7 days,Manhattan,1670,6.0
-31-90 days,Bronx,4500,58.0
-91-180 days,Brooklyn,7244,132.0
-8-30 days,Brooklyn,9464,17.0
-180+ days,Bronx,4667,352.0
-0-7 days,Unspecified,29,6.0
 31-90 days,Queens,10383,56.0
 180+ days,Queens,21501,341.0
 91-180 days,Unspecified,143,131.0
 8-30 days,Unspecified,144,19.0
 0-7 days,Brooklyn,2558,6.0
+91-180 days,Queens,8383,130.0
+8-30 days,Queens,8343,19.0
+0-7 days,Manhattan,1670,6.0
+91-180 days,Staten Island,810,126.0
+8-30 days,Staten Island,1342,17.0
 31-90 days,Staten Island,1274,55.0
 180+ days,Staten Island,2513,349.0
-31-90 days,Manhattan,9433,58.0
-180+ days,Manhattan,14864,311.0
-91-180 days,Manhattan,9330,135.0
-8-30 days,Manhattan,6378,17.0
-31-90 days,Brooklyn,10168,54.0
-91-180 days,Bronx,8442,135.0
-8-30 days,Bronx,4164,17.0
-180+ days,Brooklyn,15964,337.0
+91-180 days,Brooklyn,7244,132.0
+31-90 days,Bronx,4500,58.0
+8-30 days,Brooklyn,9464,17.0
+180+ days,Bronx,4667,352.0
+0-7 days,Unspecified,29,6.0
 31-90 days,Unspecified,200,57.0
 180+ days,Unspecified,284,311.0
 0-7 days,Bronx,1626,6.0
+91-180 days,Bronx,8442,135.0
+31-90 days,Brooklyn,10168,54.0
+8-30 days,Bronx,4164,17.0
+180+ days,Brooklyn,15964,337.0
+31-90 days,Manhattan,9433,58.0
+180+ days,Manhattan,14864,311.0

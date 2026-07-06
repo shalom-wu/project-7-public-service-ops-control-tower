@@ -1,12 +1,12 @@
 agency,agency_name,total_requests,closed_requests,open_requests,avg_closure_days,median_closure_days,sla_miss_rate,aged_open_30d_plus
-OTI,Office of Technology and Innovation,99,73,26,21.2,21.0,0.766,19
-OOS,Office of the Sheriff,1192,463,729,41.5,41.0,0.9549,460
 DCWP,Department of Consumer and Worker Protection,5751,4448,1303,16.3,4.0,0.4325,259
-DHS,Department of Homeless Services,15423,14323,1100,2.8,0.0,0.1159,640
 TLC,Taxi and Limousine Commission,24168,3206,20962,9.1,5.0,0.8552,18605
-DOT,Department of Transportation,89828,70050,19778,5.0,2.0,0.2399,15135
+OTI,Office of Technology and Innovation,99,73,26,21.2,21.0,0.766,19
+DHS,Department of Homeless Services,15423,14323,1100,2.8,0.0,0.1159,640
+OOS,Office of the Sheriff,1192,463,729,41.5,41.0,0.9549,460
 DSNY,Department of Sanitation,84781,78085,6696,2.5,1.0,0.0899,5264
 EDC,Economic Development Corporation,18998,0,18998,,,1.0,18620
+DOT,Department of Transportation,89828,70050,19778,5.0,2.0,0.2399,15135
 DEP,Department of Environmental Protection,60252,53190,7062,3.3,1.0,0.2749,4816
 NYC311-PRD,HIQA,302,294,8,2.0,1.0,0.0265,8
 HPD,Department of Housing Preservation and Development,176637,141164,35473,9.9,5.0,0.2431,24428

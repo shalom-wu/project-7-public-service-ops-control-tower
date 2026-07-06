@@ -163,6 +163,10 @@ WITH cells AS (
         open_requests,
         sla_miss_rate,
         COALESCE(aged_share_of_open, 0)                      AS aged_share_of_open,
+        -- percentile components exported separately so Power BI's what-if
+        -- weight sliders can recompute the score in DAX
+        ROUND(percent_rank() OVER (ORDER BY total_requests), 4) AS volume_percentile,
+        ROUND(percent_rank() OVER (ORDER BY open_requests), 4)  AS backlog_percentile,
         ROUND(  0.30 * percent_rank() OVER (ORDER BY total_requests)
               + 0.25 * percent_rank() OVER (ORDER BY open_requests)
               + 0.25 * COALESCE(sla_miss_rate, 0)
