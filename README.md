@@ -1,89 +1,91 @@
-# Public Service Operations - SLA Control Tower
+# Public Service Operations Control Tower (e)
 
-This repository builds an operations control tower from public NYC 311 service-request data. It includes SQL KPI definitions, an Excel workbook, and a Power BI dashboard for request volume, closure performance, SLA misses, backlog aging, and priority scoring.
-**Data:** [NYC Open Data — 311 Service Requests](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9)
-(dataset `erm2-nwe9`): every request created Apr–Jun 2026 (968,993) plus all
-older still-open requests back to Jan 2025 (101,825), snapshot 2026-07-05.
-This is **public city service-request data, not private company operations
-data** — staffing and true agency capacity are not in the dataset and are
-never claimed. Full citation, field list and reproduction steps:
-[data-sources.md](data-sources.md).
+This repository builds an Excel-led operations control tower from public NYC 311 service-request data. It includes SQL KPI definitions, a 10-tab Excel workbook, and a Power BI dashboard for request volume, closure performance, SLA misses, backlog aging, and priority scoring.
 
-## Key findings (snapshot 2026-07-05)
+The `(e)` marker identifies this as one of the Excel-based projects.
 
-| # | Finding | Number |
-|---|---|---|
-| 1 | Q2 request volume, and rising through the quarter (Queens +11.0% then +6.5% MoM) | **969K** (~75K/week) |
-| 2 | Open backlog at snapshot | **~168K** requests |
-| 3 | Share of open backlog already older than 30 / 180 days | **77% / 36%** |
-| 4 | Citywide SLA miss rate vs assumed targets | **18.7%** |
-| 5 | Worst high-volume SLA performers: Taxi Complaint, Root/Sewer/Sidewalk, Overgrown Tree/Branches | **99.6% / 99.5% / 88.5%** miss |
-| 6 | NYPD share of Q2 demand — closed in hours (enforcement vs works-type demand is the operational fault line) | **48%**, 0.2-day avg closure |
-| 7 | Helicopter-noise requests unclosed (reporting artifact, flagged not hidden) | **~19K, 100% open** |
+## Project Summary
 
-![Power BI dashboard — Executive Operations Overview (actual Desktop capture)](power-bi/screenshots/pbix_page1_executive_overview.png)
-
-## Repository contents
-
-| Layer | Deliverable |
+| Area | Details |
 |---|---|
-| **Excel** | [`excel/public_service_ops_control_tower.xlsx`](excel/public_service_ops_control_tower.xlsx) — 10 tabs: README, raw sample, 100K-row cleaned table with live formula columns, data dictionary, editable assumptions (SLA targets, aging buckets, priority weights), native pivot tables + pivot charts, SLA analysis, backlog analysis, priority model, action list. Zero formula errors; verified by full recalculation in Excel. |
-| **SQL** | [`sql/`](sql) — DuckDB scripts: 9 data-quality checks, KPI views (the reference definitions), 10 analysis queries, priority scoring. [`sql/README.md`](sql/README.md) documents every definition. |
-| **Power BI** | [`power-bi/public_service_ops_control_tower.pbix`](power-bi/public_service_ops_control_tower.pbix) — the working 4-page dashboard with the full 1.07M-row extract imported: executive KPIs, demand patterns, SLA/backlog diagnostics, and a priority matrix with what-if weight sliders. Authored as code (the PBIP semantic-model + report source is committed alongside), documented in [`power-bi/`](power-bi) with model docs, DAX reference, and real Desktop screenshots. |
-| **Strategy** | [`reports/strategy_brief.md`](reports/strategy_brief.md) — findings, the priority model, a weekly/monthly operating rhythm, escalation criteria, limitations. |
+| Business question | Which service-request categories and boroughs need operational attention based on volume, SLA risk, backlog age, and priority score? |
+| Data | NYC Open Data 311 service requests: Q2 2026 requests plus older still-open requests back to January 2025, snapshot 2026-07-05. |
+| Methods | Data extraction, quality checks, SLA assumptions, backlog aging, priority scoring, SQL KPI views, Excel pivots, Power BI dashboarding. |
+| Main outputs | Excel workbook, SQL KPI layer, Power BI dashboard, strategy brief, screenshots. |
+| Tools | Excel, Python, DuckDB SQL, Power BI, Power BI Project files. |
 
-## How the three tools work together
+## Key Findings
 
-**SQL is the source of truth** — every KPI (closure, SLA miss, aging,
-priority score) is defined once in `sql/kpi_views.sql` against the full
-1.07M-row extract. **Excel is the working model** — a 100K-row random sample
-with the same definitions as live formulas, so every assumption (SLA
-targets, weights, buckets) is editable and everything recalculates.
-**Power BI is the dashboard layer** — the SQL exports load into a star
-schema with what-if weight sliders on the priority model. Rates agree across
-all three; volumes in Excel are labeled as sample-based with a scaling
-factor.
+| # | Finding | Evidence |
+|---|---|---|
+| 1 | Q2 request volume is high and rising. | About 969K Q2 requests, or roughly 75K per week. |
+| 2 | The open backlog is material. | About 168K requests are open at the snapshot date. |
+| 3 | Much of the backlog is old. | 77% of open backlog is older than 30 days, and 36% is older than 180 days. |
+| 4 | SLA misses are concentrated by request type. | Citywide miss rate is 18.7% under the documented assumed targets. |
+| 5 | Enforcement and works-type demand behave differently. | NYPD handles 48% of Q2 demand with very short average closure times. |
+| 6 | Reporting artifacts are flagged, not hidden. | Helicopter-noise requests show about 19K unclosed records and are explicitly called out as a likely recording issue. |
 
-## How to use it
+![Power BI dashboard - Executive Operations Overview](power-bi/screenshots/pbix_page1_executive_overview.png)
 
-**Just exploring?** Open the Excel workbook (start at its README tab), or
-read the [strategy brief](reports/strategy_brief.md) and the
-[dashboard mockups](power-bi/screenshots).
+## Data
 
-**Reproducing from scratch:**
+The project uses [NYC Open Data - 311 Service Requests](https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9), dataset `erm2-nwe9`. The snapshot includes every request created from April through June 2026 plus older still-open requests back to January 2025.
+
+This is public city service-request data, not private company operations data. Staffing and true agency capacity are not in the dataset and are not inferred. Full citation, field list, and reproduction steps are in [data-sources.md](data-sources.md).
+
+## Methodology
+
+1. Pull the public 311 extract and normalize request dates, statuses, boroughs, agencies, and complaint types.
+2. Define SLA assumptions and aging buckets in editable assumption files.
+3. Validate the data and compute full-population KPIs in DuckDB SQL.
+4. Build a 100K-row Excel sample with live formulas, pivot tables, and editable assumptions.
+5. Build a Power BI dashboard from SQL exports with executive, demand, SLA/backlog, and priority pages.
+
+## Repository Contents
+
+| Path | Purpose |
+|---|---|
+| [excel/](excel) | 10-tab Excel control tower workbook with assumptions, pivots, formulas, and action views. |
+| [sql/](sql) | DuckDB data-quality checks, KPI views, analysis queries, and priority scoring. |
+| [power-bi/](power-bi) | Working `.pbix`, PBIP source, DAX, model documentation, refresh notes, and screenshots. |
+| [reports/](reports) | Strategy brief and supporting reporting notes. |
+| [scripts/](scripts) | Data pull, preparation, SQL export, workbook build, and workbook finalization scripts. |
+| [data/](data) | Source extracts, assumptions, processed files, and Power BI exports. |
+
+## Reproduce
+
+Requires Python 3.11+. Desktop Excel on Windows is required for the final pivot-table and recalculation step.
 
 ```bash
-pip install pandas pyarrow duckdb openpyxl requests   # pywin32 for the Excel pivot step
-python scripts/pull_data.py        # ~10 min: pulls the 1.07M-row extract from NYC Open Data
-python scripts/prepare_data.py     # typing + normalization + Excel sample
-python scripts/run_sql.py          # DQ checks, KPI views, Power BI exports
-python scripts/build_workbook.py   # workbook structure + formulas
-python scripts/finalize_workbook.py  # pivot tables + recalc (needs desktop Excel on Windows)
+git clone https://github.com/shalom-wu/public-service-ops-control-tower.git
+cd public-service-ops-control-tower
+pip install pandas pyarrow duckdb openpyxl requests
+
+python scripts/pull_data.py
+python scripts/prepare_data.py
+python scripts/run_sql.py
+python scripts/build_workbook.py
+python scripts/finalize_workbook.py
 ```
 
-**Opening the Power BI dashboard:** open
-[`power-bi/public_service_ops_control_tower.pbix`](power-bi/public_service_ops_control_tower.pbix)
-in the free Power BI Desktop — data is already imported. To rebuild from
-scratch instead, follow
-[`power-bi/manual_build_instructions.md`](power-bi/manual_build_instructions.md).
+Open [power-bi/public_service_ops_control_tower.pbix](power-bi/public_service_ops_control_tower.pbix) in Power BI Desktop to inspect the imported dashboard.
+
+## Reporting Layer
+
+SQL is the source of truth for full-population KPI definitions. Excel is the editable working model with a labeled sample, live formulas, pivots, and assumptions. Power BI is the dashboard layer using SQL exports and what-if style reporting views.
+
+The three layers are designed to reconcile: SQL owns the official counts, Excel makes assumptions auditable, and Power BI presents the stakeholder dashboard.
 
 ## Limitations
 
-- **No staffing/capacity data** — high backlog may mean under-resourcing,
-  not negligence; this project never equates the two.
-- **SLA targets are analyst assumptions**, reasoned and documented in
-  [`data/assumptions/sla_targets.csv`](data/assumptions/sla_targets.csv),
-  adjustable in one place. NYC publishes no per-type SLA in this dataset.
-- **"Closed" is a recording fact, not verified resolution.** 1.9% of records
-  have status/date disagreements — measured, documented (SQL check #04) and
-  handled explicitly.
-- **One quarter + inherited backlog** — winter-seasonal types (heat/hot
-  water) are underrepresented; flagged wherever it matters.
-- The Excel workbook runs on a labeled 100K random sample for file-size
-  sanity; rates are unbiased, volumes carry a scaling factor, and
-  full-population numbers come from SQL/Power BI.
+- The dataset has no staffing or capacity fields.
+- SLA targets are analyst assumptions because NYC does not publish per-type SLA targets in this dataset.
+- "Closed" is a recorded status, not verified resolution.
+- One quarter plus inherited backlog underrepresents seasonal categories.
+- Excel uses a labeled 100K random sample for file-size reasons; full-population counts come from SQL and Power BI.
 
-## Author
+## License And Credit
 
-Shalom Wu ([@shalom-wu](https://github.com/shalom-wu)). Data: City of New
-York, NYC Open Data (`erm2-nwe9`). MIT licensed.
+MIT License. Copyright (c) 2026 Shalom Wu.
+
+Data credit: City of New York, NYC Open Data 311 Service Requests dataset (`erm2-nwe9`). See [data-sources.md](data-sources.md) for source notes, fields, and usage caveats.
