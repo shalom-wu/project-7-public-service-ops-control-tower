@@ -4,6 +4,12 @@ data/raw/*.csv
 # Office lock/temp files
 ~$*.xlsx
 *.tmp
+*.tmp.xlsx
+data/powerbi/tmp_*
+
+# Internal prep docs
+explainer-guide/
+docs/explain-it-to-me.md
 
 # Python support-script cruft
 __pycache__/

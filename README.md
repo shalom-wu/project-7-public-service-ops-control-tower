@@ -43,7 +43,6 @@ never claimed. Full citation, field list and reproduction steps:
 | **SQL** | [`sql/`](sql) — DuckDB scripts: 9 data-quality checks, KPI views (the reference definitions), 10 analysis queries, priority scoring. [`sql/README.md`](sql/README.md) documents every definition. |
 | **Power BI** | [`power-bi/public_service_ops_control_tower.pbix`](power-bi/public_service_ops_control_tower.pbix) — the working 4-page dashboard with the full 1.07M-row extract imported: executive KPIs, demand patterns, SLA/backlog diagnostics, and a priority matrix with what-if weight sliders. Authored as code (the PBIP semantic-model + report source is committed alongside), documented in [`power-bi/`](power-bi) with model docs, DAX reference, and real Desktop screenshots. |
 | **Strategy** | [`reports/strategy_brief.md`](reports/strategy_brief.md) — findings, the priority model, a weekly/monthly operating rhythm, escalation criteria, limitations. |
-| **Explainer** | [`explainer-guide/explain-it-to-me.md`](explainer-guide/explain-it-to-me.md) — the whole project for a non-technical reader, plus interview Q&A and a glossary. |
 
 ## How the three tools work together
 

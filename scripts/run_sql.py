@@ -53,24 +53,46 @@ def main() -> None:
     out.mkdir(parents=True, exist_ok=True)
     print("\n=== exports for Power BI ===")
     for view, fname in EXPORTS.items():
-        if fname.endswith(".parquet"):
-            con.execute(f"COPY (SELECT * FROM {view}) TO '{(out / fname).as_posix()}' "
-                        f"(FORMAT PARQUET, COMPRESSION ZSTD)")
-        else:
-            con.execute(f"COPY (SELECT * FROM {view}) TO '{(out / fname).as_posix()}' "
-                        f"(HEADER, DELIMITER ',')")
+        target = out / fname
+        try:
+            if target.exists():
+                target.unlink()
+            if fname.endswith(".parquet"):
+                con.execute(f"COPY (SELECT * FROM {view}) TO '{target.as_posix()}' "
+                            f"(FORMAT PARQUET, COMPRESSION ZSTD)")
+            else:
+                con.execute(f"COPY (SELECT * FROM {view}) TO '{target.as_posix()}' "
+                            f"(HEADER, DELIMITER ',')")
+        except (PermissionError, duckdb.IOException):
+            n = con.execute(f"SELECT COUNT(*) FROM {view}").fetchone()[0]
+            print(f"  {fname}: kept existing locked file; expected {n:,} rows")
+            continue
         n = con.execute(f"SELECT COUNT(*) FROM {view}").fetchone()[0]
         print(f"  {fname}: {n:,} rows")
 
     # the SLA assumptions and calendar helper also ship to Power BI
-    con.execute(f"COPY (SELECT * FROM sla_targets) TO "
-                f"'{(out / 'dim_sla_targets.csv').as_posix()}' (HEADER, DELIMITER ',')")
-    con.execute(
-        "COPY (SELECT r::DATE AS date, date_trunc('week', r)::DATE AS week_start, "
-        "date_trunc('month', r)::DATE AS month_start, strftime(r, '%a') AS weekday "
-        "FROM range(DATE '2025-01-01', DATE '2026-07-01', INTERVAL 1 DAY) t(r)) "
-        f"TO '{(out / 'dim_date.csv').as_posix()}' (HEADER, DELIMITER ',')")
-    print("  dim_sla_targets.csv, dim_date.csv")
+    try:
+        target = out / "dim_sla_targets.csv"
+        if target.exists():
+            target.unlink()
+        con.execute(f"COPY (SELECT * FROM sla_targets) TO "
+                    f"'{target.as_posix()}' (HEADER, DELIMITER ',')")
+        print("  dim_sla_targets.csv")
+    except (PermissionError, duckdb.IOException):
+        n = con.execute("SELECT COUNT(*) FROM sla_targets").fetchone()[0]
+        print(f"  dim_sla_targets.csv: kept existing locked file; expected {n:,} rows")
+    try:
+        target = out / "dim_date.csv"
+        if target.exists():
+            target.unlink()
+        con.execute(
+            "COPY (SELECT r::DATE AS date, date_trunc('week', r)::DATE AS week_start, "
+            "date_trunc('month', r)::DATE AS month_start, strftime(r, '%a') AS weekday "
+            "FROM range(DATE '2025-01-01', DATE '2026-07-01', INTERVAL 1 DAY) t(r)) "
+            f"TO '{target.as_posix()}' (HEADER, DELIMITER ',')")
+        print("  dim_date.csv")
+    except (PermissionError, duckdb.IOException):
+        print("  dim_date.csv: kept existing locked file")
 
 
 if __name__ == "__main__":
